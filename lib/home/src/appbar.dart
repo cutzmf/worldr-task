@@ -1,8 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:worldrtesttask/utils/context_extension.dart';
+import 'package:flutter/services.dart';
 import 'package:worldrtesttask/common/src/offset_animation.dart';
+import 'package:worldrtesttask/utils/context_extension.dart';
 
 /// Depends on [DefaultTabController]
 class AnimatedAppBar extends PreferredSize {
@@ -15,23 +16,26 @@ class AnimatedAppBar extends PreferredSize {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Container(
-          height: kToolbarHeight + context.safeTop,
-          color: Colors.transparent,
-          child: CustomSingleChildLayout(
-            delegate: const _AppbarLayoutDelegate(),
-            child: Stack(
-              children: [
-                for (var index = 0; index < headers.length; index++)
-                  _AnimatedContent(
-                    index: index,
-                    header: headers[index],
+        AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light,
+          child: Container(
+            height: kToolbarHeight + context.safeTop,
+            color: Colors.transparent,
+            child: CustomSingleChildLayout(
+              delegate: const _AppbarLayoutDelegate(),
+              child: Stack(
+                children: [
+                  for (var index = 0; index < headers.length; index++)
+                    _AnimatedContent(
+                      index: index,
+                      header: headers[index],
+                    ),
+                  Container(
+                    height: context.safeTop,
+                    color: Colors.black,
                   ),
-                Container(
-                  height: context.safeTop,
-                  color: Colors.black,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
