@@ -8,16 +8,13 @@ class FooterBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
-      child: Material(
-        color: Colors.black,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            for (var index = 0; index < footerIcons.length; index++)
-              _FooterIconWidget(footerIcon: footerIcons[index], index: index),
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (var index = 0; index < footerIcons.length; index++)
+            _FooterIconWidget(footerIcon: footerIcons[index], index: index),
+        ],
       ),
     );
   }

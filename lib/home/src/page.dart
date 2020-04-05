@@ -75,7 +75,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 MessagesView(),
               ],
             ),
-            bottomNavigationBar: FooterBar(footerIcons: footerIcons),
+            bottomNavigationBar: Material(
+              color: Colors.black,
+              child: SafeArea(
+                child: FooterBar(footerIcons: footerIcons),
+              ),
+            ),
           ),
         ),
       ),
